@@ -43,7 +43,7 @@ public class Rol {
         joinColumns = @JoinColumn(name = "role_id"),
         inverseJoinColumns = @JoinColumn(name = "permiso_id")
     )
-    private Set<Permission> permissions = new HashSet<>();
+    private Set<Permiso> permiso = new HashSet<>();
 
     @CreationTimestamp
     private LocalDateTime createdAt;

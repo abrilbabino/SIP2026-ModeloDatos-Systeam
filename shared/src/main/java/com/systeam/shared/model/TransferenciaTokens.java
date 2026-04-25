@@ -31,11 +31,9 @@ public class TransferenciaTokens {
     @Column(nullable = false, precision = 15, scale = 2)
     private BigDecimal monto;
 
-    // Trazabilidad de la Blockchain (Hash de la transacción)
     @Column(name = "tx_hash", length = 255)
     private String txHash;
 
-    // Solo fecha de creación (Inmutable)
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
