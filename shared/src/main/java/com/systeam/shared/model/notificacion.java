@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class notificacion {
+public class Notificacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

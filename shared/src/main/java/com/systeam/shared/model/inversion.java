@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class inversion {
+public class Inversion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
