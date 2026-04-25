@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.hibernate.annotations.SQLRestriction;
-
 import org.hibernate.annotations.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -60,11 +58,14 @@ public class Usuario {
     private Set<Rol> roles = new HashSet<>();
 
     @CreationTimestamp
+    @Column(name = "created_at", updatable = false, nullable = false)
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    // Soft Delete: Almacena la fecha de eliminación lógica
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 }
