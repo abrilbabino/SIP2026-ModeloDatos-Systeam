@@ -37,7 +37,7 @@ public class Dividendo {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USUARIO_ID", nullable = false)
-    private User usuario;
+    private Usuario usuario;
 
     @Column(name = "MONTO_USDT", nullable = false, precision = 18, scale = 6)
     private BigDecimal montoUsdt;
