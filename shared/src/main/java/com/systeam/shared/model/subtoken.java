@@ -1,31 +1,26 @@
-package com.systeam.backend.UserAdministration.model;
+package com.systeam.shared.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Entity
-@Table(name = "subtoken")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
+@Table(name = "subtokens")
 public class Subtoken {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-   
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "proyecto_id", referencedColumnName = "id", nullable = false, unique = true)
+    @JoinColumn(name = "proyecto_id", nullable = false, unique = true)
     private Proyecto proyecto;
 
     @Column(nullable = false, length = 20)
@@ -37,6 +32,7 @@ public class Subtoken {
     @Column(name = "cupo_restante", nullable = false)
     private Integer cupoRestante;
 
+    // REGLA DE LA CÁTEDRA: Decimal para dinero
     @Column(name = "precio_actual", nullable = false, precision = 15, scale = 2)
     private BigDecimal precioActual;
 
