@@ -20,33 +20,30 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "DIVIDENDO")
+@Table(name = "VOTO")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Dividendo {
+public class Voto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "proyecto_id", nullable = false)
-    private Proyecto proyecto;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
-    @Column(name = "monto_usdt", nullable = false, precision = 15, scale = 2)
-    private BigDecimal montoUsdt;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "proyecto_id", nullable = false)
+    private Proyecto proyecto;
+
+    @Column(name = "tockens_usados", nullable = false, precision = 15, scale = 2)
+    private Integer tokensUsados;
 
     @Column(name = "tx_hash", length = 255)
     private String txHash;
-
-    @Column(name = "fecha_distribucion")
-    private LocalDateTime fechaDistribucion;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
