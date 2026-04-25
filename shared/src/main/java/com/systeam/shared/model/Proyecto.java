@@ -4,13 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity
@@ -29,7 +26,6 @@ public class Proyecto {
     // Referencia al creador (FK: user_id)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    @ToString.Exclude
     private Usuario creador;
 
     @Column(nullable = false, length = 200)
@@ -51,10 +47,6 @@ public class Proyecto {
     @Column(name = "gobernanza_comunidad", nullable = false)
     @Builder.Default
     private Boolean gobernanzaComunidad = false;
-
-    // --- RELACIONES  ---
-
-    
 
     // --- AUDITORÍA Y CONTROL ---
 

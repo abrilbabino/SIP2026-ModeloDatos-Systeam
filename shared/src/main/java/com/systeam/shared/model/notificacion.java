@@ -1,4 +1,4 @@
-package com.systeam.backend.UserAdministration.model;
+package com.systeam.shared.model;
 
 import java.time.LocalDateTime;
 
@@ -15,34 +15,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Notificacion {
+public class notificacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /*
-     * Relación con el Usuario.
-     * Define a quién va dirigida la notificación.
-     */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", nullable = false)
-    private User usuario;
+    private Usuario usuario;
 
     @Column(nullable = false, length = 150)
     private String titulo;
 
-    /*
-     * Al ser tipo 'text' en SQL, usamos columnDefinition = "TEXT" 
-     * para asegurar que soporte mensajes largos.
-     */
     @Column(nullable = false, columnDefinition = "TEXT")
     private String mensaje;
 
-    /*
-     * HU18: Indica si el usuario ya vio la notificación.
-     * Definimos el valor por defecto como 'false' (no leída).
-     */
     @Builder.Default
     @Column(nullable = false)
     private Boolean leida = false;

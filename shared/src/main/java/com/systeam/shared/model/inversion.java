@@ -1,4 +1,4 @@
-package com.systeam.backend.UserAdministration.model;
+package com.systeam.shared.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Inversion {
+public class inversion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Inversion {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", nullable = false)
-    private User usuario;
+    private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "proyecto_id", referencedColumnName = "id", nullable = false)
@@ -37,15 +37,9 @@ public class Inversion {
     @Column(name = "sub_tokens_recibidos", nullable = false)
     private Integer subTokensRecibidos;
 
-    // HU10/HU11: Trazabilidad blockchain
     @Column(name = "tx_hash", length = 255)
     private String txHash;
 
-    /*
-     * Esta como DEFAULT 'completada'. 
-     * @Builder.Default asegura que si creas un objeto con Lombok (el patrón Builder) 
-     * y no le pasas un estado, arranque con "completada" por defecto.
-     */
     @Builder.Default
     @Column(nullable = false, length = 50)
     private String estado = "completada";

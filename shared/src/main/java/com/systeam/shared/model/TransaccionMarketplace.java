@@ -36,7 +36,6 @@ public class TransaccionMarketplace {
     @Column(name = "precio_total", nullable = false, precision = 15, scale = 2)
     private BigDecimal precioTotal;
 
-    // Trazabilidad de la Blockchain
     @Column(name = "tx_hash", length = 255)
     private String txHash;
 

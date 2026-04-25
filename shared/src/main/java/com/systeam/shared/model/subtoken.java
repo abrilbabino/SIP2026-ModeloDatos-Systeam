@@ -32,7 +32,6 @@ public class Subtoken {
     @Column(name = "cupo_restante", nullable = false)
     private Integer cupoRestante;
 
-    // REGLA DE LA CÁTEDRA: Decimal para dinero
     @Column(name = "precio_actual", nullable = false, precision = 15, scale = 2)
     private BigDecimal precioActual;
 

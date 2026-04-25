@@ -1,11 +1,15 @@
 package com.systeam.shared.model;
 
+import jakarta.persistence.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.annotations.SQLRestriction;
+
 import org.hibernate.annotations.*;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,7 +32,7 @@ public class Usuario {
     private String nombre;
 
     @Column(nullable = false)
-    private Date fecha_nacimiento;
+    private LocalDateTime fecha_nacimiento;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -36,13 +40,14 @@ public class Usuario {
     @Column(nullable = false)
     private String password_hash;
 
-    @Column(nullable = false)
-    private Decimal saldo_idea;
+    @Column(nullable = false, precision=15, scale=2)
+    private BigDecimal saldo_idea;
 
     @Column(nullable = false)
-    private Decimal saldo_usdt;
+    private BigDecimal saldo_usdt;
 
     @Column(nullable = false)
+    @Builder.Default
     private Boolean enabled = true;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -51,7 +56,8 @@ public class Usuario {
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<Role> roles = new HashSet<>();
+    @Builder.Default
+    private Set<Rol> roles = new HashSet<>();
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -59,6 +65,6 @@ public class Usuario {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @
-    private LocalDateTime deleted_at;
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 }
