@@ -11,7 +11,7 @@ Maven necesita saber que eres parte del equipo SysTeam para dejarte descargar el
 2. Ve a **Settings** (Configuración) > **Developer settings** > **Personal access tokens** > **Tokens (classic)**.
 3. Haz clic en **Generate new token (classic)**.
 4. Ponle un nombre para acordarte (ej. `systeam-maven`).
-5. En la sección "Select scopes", **marca únicamente la casilla `read:packages`**.
+5. En la sección "Select scopes", **marca únicamente la casilla `write:packages`**.
 6. Genera el token y **CÓPIALO**. (¡Ojo! GitHub no te lo volverá a mostrar. Guárdalo en un bloc de notas por ahora).
 
 ## Configurar Maven en tu computadora
