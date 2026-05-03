@@ -184,5 +184,11 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<distributionManagement>
+    <repository>
+        <id>github</id>
+       <name>GitHub Packages</name>
+       <url>https://maven.pkg.github.com/abrilbabino/SIP2026-ModeloDatos-Systeam</url>
+    </repository>
+   </distributionManagement>
 </project>
