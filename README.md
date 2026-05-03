@@ -33,6 +33,13 @@ Ahora vamos a decirle a tu computadora cómo usar ese token.
     </servers>
 </settings>
 ```
+
+## Hacer un .env en la raíz del proyecto
+```bash
+GITHUB_USERNAME=
+GITHUB_TOKEN=
+```
+
 ## Descargar la librería y compilar
 Una vez configurado el archivo, abre tu terminal en la carpeta de este proyecto (Gestion_de_proyectos-Systeam) y ejecuta:
 ```bash
