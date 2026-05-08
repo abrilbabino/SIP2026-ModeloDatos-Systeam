@@ -5,9 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import org.hibernate.annotations.SQLRestriction;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,39 +13,33 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "rol")
+@Table(name = "roles")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@SQLRestriction("deleted_at IS NULL")
-
 public class Rol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String nombre;
+    @Column(nullable = false, unique = true, length = 50)
+    private String name;
 
-    private String descripcion;
+    @Column(length = 255)
+    private String description;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-        name = "role_permiso",
+        name = "role_permissions",
         joinColumns = @JoinColumn(name = "role_id"),
-        inverseJoinColumns = @JoinColumn(name = "permiso_id")
+        inverseJoinColumns = @JoinColumn(name = "permission_id")
     )
     @Builder.Default
-    private Set<Permiso> permiso = new HashSet<>();
+    private Set<Permiso> permissions = new HashSet<>();
 
     @CreationTimestamp
+    @Column(name = "created_at", updatable = false, nullable = false)
     private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
-
-    @Column(name = "deleted_at")
-    private LocalDateTime deletedAt;
 }

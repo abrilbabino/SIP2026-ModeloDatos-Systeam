@@ -48,6 +48,16 @@ public class Proyecto {
     @Builder.Default
     private Boolean gobernanzaComunidad = false;
 
+    // --- TOKENIZACIÓN ---
+
+    // Cantidad máxima de tokens que se pueden emitir para este proyecto
+    @Column(name = "cupo_maximo_tokens")
+    private Long cupoMaximoTokens;
+
+    // Valor nominal de cada token en la moneda del proyecto
+    @Column(name = "valor_nominal_token", precision = 15, scale = 2)
+    private BigDecimal valorNominalToken;
+
     // --- AUDITORÍA Y CONTROL ---
 
     @CreationTimestamp

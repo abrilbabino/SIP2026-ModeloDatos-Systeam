@@ -2,47 +2,45 @@ package com.systeam.shared.model;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@SQLRestriction("deleted_at IS NULL")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String nombre;
+    @Column(nullable = false, length = 100)
+    private String name;
 
-    @Column(nullable = false)
-    private LocalDateTime fecha_nacimiento;
-
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 150)
     private String email;
 
-    @Column(nullable = false)
-    private String password_hash;
+    // Nullable: usuarios OAuth2 no tienen password local
+    @Column(nullable = true)
+    private String password;
 
-    @Column(nullable = false, precision=15, scale=2)
-    private BigDecimal saldo_idea;
+    @Column(nullable = false, length = 50)
+    @Builder.Default
+    private String provider = "local";
 
-    @Column(nullable = false)
-    private BigDecimal saldo_usdt;
+    @Column(name = "provider_id")
+    private String providerId;
 
     @Column(nullable = false)
     @Builder.Default
@@ -50,7 +48,7 @@ public class Usuario {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-        name = "user_role",
+        name = "user_roles",
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
@@ -64,8 +62,4 @@ public class Usuario {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
-    // Soft Delete: Almacena la fecha de eliminación lógica
-    @Column(name = "deleted_at")
-    private LocalDateTime deletedAt;
 }
