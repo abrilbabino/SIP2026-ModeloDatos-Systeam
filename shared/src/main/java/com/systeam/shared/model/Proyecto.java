@@ -52,11 +52,16 @@ public class Proyecto {
 
     // Cantidad máxima de tokens que se pueden emitir para este proyecto
     @Column(name = "cupo_maximo_tokens")
-    private Long cupoMaximoTokens;
+    private Integer cupoMaximoTokens;
 
     // Valor nominal de cada token en la moneda del proyecto
     @Column(name = "valor_nominal_token", precision = 15, scale = 2)
     private BigDecimal valorNominalToken;
+
+    // Monto acumulado mediante inversiones
+    @Column(name = "monto_recaudado", precision = 15, scale = 2)
+    @Builder.Default
+    private BigDecimal montoRecaudado = BigDecimal.ZERO;
 
     // --- AUDITORÍA Y CONTROL ---
 
