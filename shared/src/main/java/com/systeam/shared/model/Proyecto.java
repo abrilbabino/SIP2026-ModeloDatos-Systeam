@@ -76,4 +76,16 @@ public class Proyecto {
     // Soft Delete: Almacena la fecha de eliminación lógica
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
+
+    // --- BOOST / DESTACADO ---
+    @Column(name = "es_destacado", nullable = false)
+    @Builder.Default
+    private Boolean esDestacado = false;
+
+    @Column(name = "fecha_boost")
+    private LocalDateTime fechaBoost;
+
+    @Column(name = "monto_boost", precision = 15, scale = 2)
+    @Builder.Default
+    private BigDecimal montoBoost = BigDecimal.ZERO;
 }
