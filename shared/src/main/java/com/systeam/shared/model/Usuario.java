@@ -2,6 +2,8 @@ package com.systeam.shared.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -62,4 +64,18 @@ public class Usuario {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @Column(name = "fecha_nacimiento")
+    private LocalDate fechaNacimiento;
+
+    @Column(name = "saldo_idea", precision = 15, scale = 2)
+    @Builder.Default
+    private BigDecimal saldoIdea = BigDecimal.ZERO;
+
+    @Column(name = "saldo_usdt", precision = 15, scale = 2)
+    @Builder.Default
+    private BigDecimal saldoUsdt = BigDecimal.ZERO;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 }
