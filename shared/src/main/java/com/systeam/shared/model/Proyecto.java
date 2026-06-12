@@ -88,4 +88,7 @@ public class Proyecto {
     @Column(name = "monto_boost", precision = 15, scale = 2)
     @Builder.Default
     private BigDecimal montoBoost = BigDecimal.ZERO;
+
+    @Column(name = "rubro")
+    private Integer rubro;
 }
