@@ -40,6 +40,9 @@ public class Inversion {
     @Column(name = "tx_hash", length = 255)
     private String txHash;
 
+    @Column(name = "descuento_porcentaje")
+    private Integer descuentoPorcentaje;
+
     @Builder.Default
     @Column(nullable = false, length = 50)
     private String estado = "completada";
