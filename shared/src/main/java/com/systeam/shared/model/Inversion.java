@@ -40,8 +40,8 @@ public class Inversion {
     @Column(name = "tx_hash", length = 255)
     private String txHash;
 
-    @Column(name = "descuento_porcentaje")
-    private Integer descuentoPorcentaje;
+    @Column(name = "descuento_porcentaje", precision = 5, scale = 2)
+    private BigDecimal descuentoPorcentaje;
 
     @Builder.Default
     @Column(nullable = false, length = 50)
