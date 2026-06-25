@@ -84,4 +84,12 @@ public class Usuario {
 
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
+
+    @Column(name = "is_diversificador")
+    @Builder.Default
+    private Boolean isDiversificador = false;
+
+    @Column(name = "nivel_inversor", length = 50)
+    @Builder.Default
+    private String nivelInversor = "STARTER";
 }
