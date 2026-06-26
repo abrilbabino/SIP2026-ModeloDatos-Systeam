@@ -29,9 +29,8 @@ public class MarketplaceTrade {
     @EqualsAndHashCode.Include
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "listing_id")
-    private OrderBook listing;
+    @Column(name = "listing_id")
+    private Long listingId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "buyer_id")
