@@ -65,6 +65,9 @@ public class Proyecto {
 
     // --- AUDITORÍA Y CONTROL ---
 
+    @Column(name = "creator_signature", length = 255)
+    private String creatorSignature;
+
     @CreationTimestamp
     @Column(name = "created_at", updatable = false, nullable = false)
     private LocalDateTime createdAt;
