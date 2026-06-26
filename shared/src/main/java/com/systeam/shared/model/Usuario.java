@@ -92,4 +92,11 @@ public class Usuario {
     @Column(name = "nivel_inversor", length = 50)
     @Builder.Default
     private String nivelInversor = "STARTER";
+
+    @Column(name = "kyc_status", length = 50)
+    @Builder.Default
+    private String kycStatus = "PENDING";
+
+    @Column(name = "kyc_provider_id", length = 255)
+    private String kycProviderId;
 }
