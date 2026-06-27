@@ -32,6 +32,9 @@ public class Hito {
     @Column(nullable = false, precision = 5, scale = 2)
     private BigDecimal porcentaje;
 
+    @Column(name = "plazo")
+    private LocalDateTime plazo;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     @Builder.Default
